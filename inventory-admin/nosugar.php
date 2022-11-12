@@ -1,40 +1,26 @@
 <?php
-if(!isset($_SESSION)){
-    ob_start();
-    session_start();
-}
-
 
 include_once("../connections/connection.php");
 include_once("../base.php");
 $con = connection();
 
-if(isset($_SESSION['UserLogin'])){
-    echo "";
-}else{
-    echo header("Location: ../index.php"); 
-}
-
-
-
-$sql = "SELECT * FROM classic ";
+$sql = "SELECT * FROM no_sugar ";
 $category = $con->query($sql) or die ($con->error);
 $row = $category-> fetch_assoc();
-
 ?>
 
+
 <link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1 class="text-center">Classic</h1>
-<br>
-<a href="../add-products-admin/add-classic.php">Add Product</a>
+<h1>No Sugar</h1>
+
+
 <table class="table table-hover">
         <thead>
-    
         <tr>
             <th>Product code </th>
             <th>Flavor</th>
             <th>Size</th>
-            <th>Price</th>
+            <th>price</th>
             <th>Available Stock</th>
             <th>Status</th>
         </tr>
@@ -48,7 +34,7 @@ $row = $category-> fetch_assoc();
             <td><?php echo $row['price'];?></td>
             <td><?php echo $row['available_stock'];?></td>
             <td><?php echo $row['status'];?></td>
-            <td><button ><a href="../edit-products-admin/edit-classic.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
+            <td><button><a href="../add-inventory-admin/add-stock-nosugar.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="add">Add Stock</a></button></td>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
         </tbody>

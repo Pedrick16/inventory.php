@@ -4,17 +4,17 @@ include_once("../connections/connection.php");
 include_once("../base.php");
 $con = connection();
 
-$sql = "SELECT * FROM deluxe ";
+$sql = "SELECT * FROM special ";
 $category = $con->query($sql) or die ($con->error);
 $row = $category-> fetch_assoc();
 ?>
 
 
 <link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1>Deluxe</h1>
+<h1 class="table table-hover">Special</h1>
 
-<a href="../add-products-admin/add-deluxe.php">Add Products</a>
-<table>
+
+<table class="table table-hover">
         <thead>
         <tr>
             <th>Product code </th>
@@ -34,7 +34,7 @@ $row = $category-> fetch_assoc();
             <td><?php echo $row['price'];?></td>
             <td><?php echo $row['available_stock'];?></td>
             <td><?php echo $row['status'];?></td>
-            <td><button><a href="../add-inventory-admin/add-stock-deluxe.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="add">Add Stock</a></button></td>
+            <td><button><a href="../add-inventory-admin/add-stock-special.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="add">Add Stock</a></button></td>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
         </tbody>

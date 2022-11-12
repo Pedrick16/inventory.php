@@ -2,26 +2,25 @@
 ob_start();
 
 ?> 
-
 <?php
 
 include_once("../connections/connection.php");
-include_once("../base.php");
+include_once("../base-staff.php");
+
 $con = connection();
 ?>
    <link rel="stylesheet" href="../css/add.css?v=<?php echo time();?>">
 
 <h1>Add Products</h1>
-<br>
-<a href="../add-products-admin/add-deluxe.php">Add Product Deluxe</a>
-<form action="" method="post">
+
+<form  method="post">
 
 
 <label>Flavors</label>
-<input type="text" name="flavor" id="lastname" required><br>
+<input type="text" name="flavor"  required><br>
 
 <label>size</label>
-<select name="size" id="gender" required><br>
+<select name="size"  required><br>
     <option></option>
     <option value="Cups 110 ml">Cups 110 ml</option>
     <option value="Pint 473 ml">Pint 473 ml</option>
@@ -30,32 +29,23 @@ $con = connection();
 </select>
 <br>
 <label>Price</label>
-<input type="text" name="price" id="lastname" required>
+<input type="text" name="price"  required>
 <br>
 
 <label>Available Stock</label>
-<input type="number" name="stock" id="lastname" required><br>
+<input type="number" name="stock"  required><br>
 
 
-<label>Category</label>
-<select name="category" id="gender" required><br>
-    <option></option>
-    <option value="Male">Classic</option>
-    <option value="Female">Special</option>
-    <option value="Female">Deluxe</option>
-    <option value="Female">Low Fat No Sugar</option>
-</select>
-<br>
 <label>Status</label>
 <select name="status"  required><br>
     <option></option>
-    <option value="Male">Available</option>
-    <option value="Female">N/A</option>
+    <option value="Available">Available</option>
+    <option value="N/A">N/A</option>
 </select>
 <br>
 
 <input type="submit" name="submit" value="Add">
-<a href="../product-list-admin/deluxe.php">Back</a>
+<a href="../product-list-admin/classic.php">Back</a>
 <?php
         if(isset($_POST['submit'])){
     
@@ -69,11 +59,10 @@ $con = connection();
             if(empty($flavor) || empty($size) || empty($price) || empty($stock)  || empty($status)){
                 echo  "All fields are required";
             }else{
-                $sql = "INSERT INTO `deluxe`( `flavor`, `size`, `price`,
+                $sql = "INSERT INTO `classic`( `flavor`, `size`, `price`,
                 `available_stock`, `status`) VALUES ('$flavor','$size','$price','$stock','$status')";
                 $con->query($sql) or die ($con->error);
-    
-                echo header("Location: deluxe.php");
+                header("Location: ../staff-site/classic.php");
                 ob_end_flush();
         
             }

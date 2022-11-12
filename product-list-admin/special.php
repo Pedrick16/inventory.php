@@ -11,9 +11,11 @@ $row = $category-> fetch_assoc();
 ?>
 
 <link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1>Special</h1>
-
-<table>
+<br>
+<h1 class="text-center">Special</h1>
+<br>
+<a href="../add-products-admin/add-special.php">Add Product</a>
+<table class="table table-hover">
         <thead>
     
         <tr>

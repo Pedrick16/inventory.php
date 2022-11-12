@@ -1,22 +1,27 @@
 
 <?php
+if(!isset($_SESSION)){
+    ob_start();
+    session_start();
+}
+
 
 include_once("../connections/connection.php");
 include_once("../base.php");
 $con = connection();
-error_reporting(0);
-
-
-
-
-
-if(!isset($_SESSION)){
-    session_start();
-}
 
 if(isset($_SESSION['UserLogin'])){
- echo "Welcome"." ".$_SESSION['UserLogin'];
+    echo "Welcome  ".$_SESSION['UserLogin'];
+}else{
+    echo header("Location: ../index.php"); 
 }
+
+
+
+
+
+
+
 
 // ORDER BY id DESC
 $sql = "SELECT * FROM users_account ORDER BY id DESC";
@@ -28,19 +33,21 @@ $row = $users-> fetch_assoc();
 
     <link rel="stylesheet" href="../css/listreseller.css?v=<?php echo time();?>">
 
-    <h1>List of Users</h1>
+    <h1 class="text-center">List of Users</h1>
     <br>
 
     <div class="new">
      <a href="../users/add-users-account.php">Add Account</a>
     </div>
+    <!-- <?php
+   echo date('m/d/Y h:i:s a', time());
+    ?> -->
 
 
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+  
             <th>Username</th>
             <th>Email</th>
             <th>Password</th>
@@ -54,8 +61,7 @@ $row = $users-> fetch_assoc();
         <?php do{ ?>
 
         <tr>
-            <td><?php echo $row['first_name'];?></td>
-            <td><?php echo $row['last_name'];?></td>
+     
             <td><?php echo $row['username'];?></td>
             <td><?php echo $row['email'];?></td>
             <td><?php echo $row['password'];?></td>
@@ -78,10 +84,9 @@ $row = $users-> fetch_assoc();
             <input type="hidden" name="email" value="<?php echo $row['email'];?>" >
             <input type="hidden" name="password" value="<?php echo $row['password'];?>" >
             <input type="hidden" name="access" value="<?php echo $row['access'];?>" >
-           
-            </form>
-            
+            <input type="hidden" name="status" value="<?php echo $row['status'];?>" >
 
+            </form>
 
         </tr>
         <?php }while($row = $users-> fetch_assoc())?>
@@ -89,13 +94,16 @@ $row = $users-> fetch_assoc();
 
         </tbody>
     </table>
+    
+  
     <?php
     if(isset($_POST['delete'])){
 
-        //delete from the database
+       
         $id = $_POST['ID'];
         $sql = "DELETE FROM users_account WHERE id='$id'";
         $con->query($sql) or die ($con->error);
+       
    
     
         // insert from archive
@@ -103,20 +111,20 @@ $row = $users-> fetch_assoc();
         $email = $_POST['email'];
         $passw = $_POST['password'];
         $access = $_POST['access'];
+        $stat = $_POST['status'];
     
 
 
         // error trapping
-        if(empty($Usern) || empty($email) || empty($passw)){
+        if(empty($Usern) || empty($email) || empty($passw) || empty($access) || empty($stat)){
 
             //errpr trapping for null 
             echo  "No Records Found!";
         }else{
-
-            //saving to archive database
-            $sql = "INSERT INTO `archive`(`first_name`, `last_name`,`username`, `email`, `password`, `access`) VALUES ('$Usern','$email', '$passw','$access')";
+            $sql = "INSERT INTO `archive`(`username`, `email`, `password`, `access`,`status`) VALUES ('$Usern','$email', '$passw','$access','$stat')";
             $con->query($sql) or die ($con->error);
             echo "<meta http-equiv='refresh' content='0'>";
+            
             //refresh for page
            
         }

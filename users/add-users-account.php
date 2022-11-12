@@ -27,13 +27,7 @@ $row = $students-> fetch_assoc();
     <h1>Registration for Account</h1>
         
 
-        <label>First Name</label>
-        <input type="text" name="firstname" id="address">
-        <br>
-
-        <label>Last Name</label>
-        <input type="text" name="lastname">
-        <br>
+   
 
         <label>Username</label>
         <input type="text" name="username" id="address">
@@ -73,26 +67,26 @@ $row = $students-> fetch_assoc();
         <br>
         <?php
         if(isset($_POST['submit'])){
-            $firstn =  $_POST['firstname'];
-            $lname =  $_POST['lastname'];
+     
             $usern =  $_POST['username'];
             $email =  $_POST['email'];
             $passw = $_POST['password'];
             $cpassw = $_POST['confirm'];
             $userty = $_POST['usertype'];
             $stat = $_POST['status'];
+ 
             $DUsern  =$row['username'];
             $DEmail  =$row['email'];
          
 
-            if(empty($usern) || empty($email) || empty($passw)  || empty($userty)  ){
+            if(empty($usern) || empty($email) || empty($passw)  || empty($userty)){
                 echo  "All fields are required";
             }elseif($passw != $cpassw){
                 echo  "Password did not match";
             }elseif($email ==  $DEmail ||   $usern == $DUsern  ){
                 echo  "Username or Email already exist";
             }else{
-                $sql = "INSERT INTO `users_account`(`first_name`, `last_name`, `username`, `email`, `password`, `access`,`status`) VALUES ('$firstn','$lname','$usern','$email','$passw','$userty','$stat')";
+                $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`,`status`) VALUES ('$usern', '$email', '$passw', '$userty', '$stat')";
                 $con->query($sql) or die ($con->error);
                 echo header("Location: ../users/list-users-account.php");
         

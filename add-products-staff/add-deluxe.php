@@ -6,14 +6,14 @@ ob_start();
 <?php
 
 include_once("../connections/connection.php");
-include_once("../base.php");
+include_once("../base-staff.php");
 $con = connection();
 ?>
    <link rel="stylesheet" href="../css/add.css?v=<?php echo time();?>">
 
 <h1>Add Products</h1>
 <br>
-<a href="../add-products-admin/add-deluxe.php">Add Product Deluxe</a>
+
 <form action="" method="post">
 
 
@@ -73,7 +73,7 @@ $con = connection();
                 `available_stock`, `status`) VALUES ('$flavor','$size','$price','$stock','$status')";
                 $con->query($sql) or die ($con->error);
     
-                echo header("Location: deluxe.php");
+                echo header("Location: ../staff-site/deluxe.php");
                 ob_end_flush();
         
             }

@@ -1,32 +1,19 @@
 <?php
-if(!isset($_SESSION)){
-    ob_start();
-    session_start();
-}
-
 
 include_once("../connections/connection.php");
-include_once("../base.php");
+include_once("../base-staff.php");
 $con = connection();
 
-if(isset($_SESSION['UserLogin'])){
-    echo "";
-}else{
-    echo header("Location: ../index.php"); 
-}
-
-
-
-$sql = "SELECT * FROM classic ";
+$sql = "SELECT * FROM special ";
 $category = $con->query($sql) or die ($con->error);
 $row = $category-> fetch_assoc();
 
 ?>
 
 <link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1 class="text-center">Classic</h1>
+<h1>Special</h1>
 <br>
-<a href="../add-products-admin/add-classic.php">Add Product</a>
+<a href="../add-products-staff/add-special.php">Add Product</a>
 <table class="table table-hover">
         <thead>
     
@@ -48,8 +35,8 @@ $row = $category-> fetch_assoc();
             <td><?php echo $row['price'];?></td>
             <td><?php echo $row['available_stock'];?></td>
             <td><?php echo $row['status'];?></td>
-            <td><button ><a href="../edit-products-admin/edit-classic.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
-        </tr>
+            <td><button ><a href="../edit-products-staff/edit-special.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
+            
         <?php }while($row = $category->fetch_assoc())?>
         </tbody>
     </table>

@@ -1,3 +1,7 @@
+<?php 
+ob_start();
+
+?> 
 <?php
 
 include_once("../connections/connection.php");
@@ -49,7 +53,7 @@ $con = connection();
 <br>
 
 <input type="submit" name="submit" value="Add">
-<a href="classic.php">Back</a>
+<a href="../product-list-admin/special.php">Back</a>
 <?php
         if(isset($_POST['submit'])){
     
@@ -68,6 +72,7 @@ $con = connection();
                 $con->query($sql) or die ($con->error);
     
                 echo header("Location: special.php");
+                ob_end_flush();
         
             }
         

@@ -1,8 +1,12 @@
+<?php 
+ob_start();
+
+?> 
 <?php
 
 include_once("../connections/connection.php");
 include_once("../base.php");
-include_once("../settings/settings-base.php");
+
 $con = connection();
 ?>
    <link rel="stylesheet" href="../css/add.css?v=<?php echo time();?>">
@@ -31,18 +35,8 @@ $con = connection();
 <label>Available Stock</label>
 <input type="number" name="stock"  required><br>
 
-
-<!-- <label>Category</label> -->
-<!-- <select name="category" id="gender" required><br>
-    <option></option>
-    <option value="Classic">Classic</option>
-    <option value="Special">Special</option>
-    <option value="Deluxe">Deluxe</option>
-    <option value="Low Fat No Sugar">Low Fat No Sugar</option>
-</select> -->
-<br>
 <label>Status</label>
-<select name="status"  required><br>
+<select name="status"  required>
     <option></option>
     <option value="Available">Available</option>
     <option value="N/A">N/A</option>
@@ -50,7 +44,7 @@ $con = connection();
 <br>
 
 <input type="submit" name="submit" value="Add">
-<a href="../productlist/classic.php">Back</a>
+<a href="../product-list-admin/classic.php">Back</a>
 <?php
         if(isset($_POST['submit'])){
     
@@ -67,8 +61,8 @@ $con = connection();
                 $sql = "INSERT INTO `classic`( `flavor`, `size`, `price`,
                 `available_stock`, `status`) VALUES ('$flavor','$size','$price','$stock','$status')";
                 $con->query($sql) or die ($con->error);
-    
                 header("Location: ../product-list-admin/classic.php");
+                ob_end_flush();
         
             }
         

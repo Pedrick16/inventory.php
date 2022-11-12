@@ -11,9 +11,9 @@ $row = $category-> fetch_assoc();
 ?>
 
 <link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1>Classic</h1>
+<h1 class="text-center">Classic</h1>
 
-<table>
+<table class="table table-hover">
         <thead>
     
         <tr>
