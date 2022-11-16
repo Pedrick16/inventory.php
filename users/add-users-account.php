@@ -1,12 +1,13 @@
 <?php
 
-error_reporting(0);
-include_once("../connections/connection.php");
 
+include_once("../connections/connection.php");
+include_once("../connections/connection-otp.php");
 
 
 
 $con = connection();
+$conn = connection_otp();
 
 $sql = "SELECT * FROM users_account ";
 $students = $con->query($sql) or die ($con->error);
@@ -88,6 +89,9 @@ $row = $students-> fetch_assoc();
             }else{
                 $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`,`status`) VALUES ('$usern', '$email', '$passw', '$userty', '$stat')";
                 $con->query($sql) or die ($con->error);
+
+                $sql = "INSERT INTO `user`(`email`) VALUES ('$email')";
+                $conn->query($sql) or die ($con->error);
                 echo header("Location: ../users/list-users-account.php");
         
             }

@@ -75,6 +75,7 @@ $row = $product-> fetch_assoc();
      
          
         <input type="submit" name="submit" value="Update">
+        
        
 
         <a href="../product-list-admin/classic.php">Back</a>

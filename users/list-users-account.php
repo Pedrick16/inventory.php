@@ -32,6 +32,12 @@ $row = $users-> fetch_assoc();
 ?>
 
     <link rel="stylesheet" href="../css/listreseller.css?v=<?php echo time();?>">
+    <style>
+        #edit{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 
     <h1 class="text-center">List of Users</h1>
     <br>
@@ -47,7 +53,6 @@ $row = $users-> fetch_assoc();
     <table class="table table-hover">
         <thead>
         <tr>
-  
             <th>Username</th>
             <th>Email</th>
             <th>Password</th>
@@ -100,6 +105,7 @@ $row = $users-> fetch_assoc();
     if(isset($_POST['delete'])){
 
        
+        
         $id = $_POST['ID'];
         $sql = "DELETE FROM users_account WHERE id='$id'";
         $con->query($sql) or die ($con->error);
@@ -113,6 +119,7 @@ $row = $users-> fetch_assoc();
         $access = $_POST['access'];
         $stat = $_POST['status'];
     
+
 
 
         // error trapping

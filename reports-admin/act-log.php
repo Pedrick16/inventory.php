@@ -38,8 +38,7 @@ $row = $users-> fetch_assoc();
                 <th>Username-Email</th>
                 <th>Activity</th>
                 <th>Date and time Logged-in</th>
-                <th>Activity</th>
-                <th>Date and time Logged-out</th>
+        
             </tr>
         </thead>
         <tbody>

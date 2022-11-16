@@ -71,7 +71,9 @@ error_reporting(0);
         <label><strong>Password</strong></label>
         <input type="password" name="password" placeholder="Enter your Password" >
 
-    
+
+
+        
         <input type="submit" name="login"value="Login" >
         <br>
       
@@ -97,7 +99,6 @@ error_reporting(0);
                 $sql = "INSERT INTO `act_log`( `user_email`, `activity`) VALUES ('$email','$act')";
                 $con->query($sql) or die ($con->error);
             
-  
             }
             
             
@@ -114,7 +115,8 @@ error_reporting(0);
             }elseif($row["access"] == "staff" And $row["status"] == "active"){
                 activy_log();
                 $_SESSION["UserLogin"] =$row['username'];
-                echo header("Location: staff-site/home.php");
+                // echo header("Location: staff-site/home.php");
+                echo header("Location: otp/otp-base.php");
             }elseif($row["status"] == "inactive"){
                 echo "This account does not Active";
             }else{

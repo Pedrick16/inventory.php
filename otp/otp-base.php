@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+    <title>OTP Based Login</title>
 </head>
 <body>
-    <h1> OTP Based Login Verification</h1>
+    <h1>OTP Based 2-Step Login Verification</h1>
     <div class="container email-container">
         <h2>Enter Email</h2>
         <form action="" class="form email-form">
-        <input type="email" name="email" id="email" placeholder="Enter email">
-        <span class="email-error"></span>
-        <button class="email-submit">Send OTP</button>
+            <input type="email" name="email" id="email" placeholder="Enter Email...">
+            <span class="email-error"></span>
+            <button class="btn email-submit">Send OTP</button>
         </form>
     </div>
 
-    
+    <div class="container otp-container">
+        <h2>Enter OTP</h2>
+        <form action="" class="form otp-form">
+            <input type="number" name="otp" id="otp" placeholder="Enter OTP...">
+            <span class="otp-error"></span>
+            <button class="btn otp-submit">Login</button>
+        </form>
+    </div>
     <script src="../js/script.js"></script>
+
 </body>
 </html>
