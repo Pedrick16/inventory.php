@@ -46,11 +46,9 @@
         
 
         <li class="nav-item">
-          <a class="nav-link" href="#">POS</a>
+          <a class="nav-link" href="../pos-staff/index.php">POS</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Transaction</a>
-        </li>
+       
 
      
         <li class="nav-item dropdown">
@@ -58,7 +56,7 @@
             Settings
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="../inventory/classic.php">Theme</a></li>
+            <li><a class="dropdown-item" href="">Theme</a></li>
             <li><a class="dropdown-item" href="../settings-staff/change-password.php">Change Password</a></li>
           </ul>
         </li>

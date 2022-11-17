@@ -47,7 +47,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link" href="../pos/index.php">POS</a>
+          <a class="nav-link" href="../pos-admin/index.php">POS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../transaction/transaction.php">Transaction</a>
@@ -57,8 +57,9 @@
             Reports
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="../reports-admin/act-log.php">activity-log</a></li>
-            
+            <li><a class="dropdown-item" href="../reports-admin/act-log.php">activity-logged-in</a></li>
+            <li><a class="dropdown-item" href="../reports-admin/act-logged-out.php">activity-logged-out</a></li>
+            <li><a class="dropdown-item" href="../reports-admin/users-list.php">Users List</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

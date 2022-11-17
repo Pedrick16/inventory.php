@@ -37,7 +37,7 @@ error_reporting(0);
         <label for="">New Password</label>
         <input type="password" name="newp" required>
         <br>
-        <label for="">Confirm Password</label>
+        <label for="">Re-type Password</label>
         <input type="password" name="cpassword" required>
 
         <input type="submit" name="submit" value="Submit">

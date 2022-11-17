@@ -9,6 +9,9 @@ if(!isset($_SESSION)){
 include_once("../connections/connection.php");
 include_once("../base.php");
 $con = connection();
+error_reporting(0);
+
+
 
 if(isset($_SESSION['UserLogin'])){
     echo "Welcome  ".$_SESSION['UserLogin'];
@@ -45,9 +48,7 @@ $row = $users-> fetch_assoc();
     <div class="new">
      <a href="../users/add-users-account.php">Add Account</a>
     </div>
-    <!-- <?php
-   echo date('m/d/Y h:i:s a', time());
-    ?> -->
+ 
 
 
     <table class="table table-hover">
@@ -56,6 +57,7 @@ $row = $users-> fetch_assoc();
             <th>Username</th>
             <th>Email</th>
             <th>Password</th>
+          
             <th>Access</th>
             <th>Status</th>
             <th>Edit</th>
@@ -70,6 +72,8 @@ $row = $users-> fetch_assoc();
             <td><?php echo $row['username'];?></td>
             <td><?php echo $row['email'];?></td>
             <td><?php echo $row['password'];?></td>
+        
+        
             <td><?php echo $row['access'];?></td>
             <td><?php echo $row['status'];?></td>
           

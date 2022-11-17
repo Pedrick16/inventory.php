@@ -13,7 +13,7 @@ error_reporting(0);
 
 
 // ORDER BY id DESC
-$sql = "SELECT * FROM act_log ORDER BY id DESC";
+$sql = "SELECT * FROM act_logged_out ORDER BY id DESC";
 $users = $con->query($sql) or die ($con->error);
 $row = $users-> fetch_assoc();
 
@@ -37,7 +37,7 @@ $row = $users-> fetch_assoc();
 
                 <th>Username-Email</th>
                 <th>Activity</th>
-                <th>Date and time Logged-in</th>
+                <th>Date and time Logged-out</th>
            
             </tr>
         </thead>
@@ -47,7 +47,7 @@ $row = $users-> fetch_assoc();
 
                 <td><?php echo $row['user_email'];?></td>
                 <td><?php echo $row['activity'];?></td>
-                <td><?php echo $row['logged-in'];?></td>
+                <td><?php echo $row['logged_out'];?></td>
      
             </tr>
             <?php }while($row = $users-> fetch_assoc())?>

@@ -13,29 +13,21 @@ $sql = "SELECT * FROM users_account ";
 $students = $con->query($sql) or die ($con->error);
 $row = $students-> fetch_assoc();
 
-
-
-
-
-
-
 ?>
 
 <link rel="stylesheet" href="../css/add.css?v=<?php echo time();?>">
 
-<form  method="post">
+<form  method="POST">
   
     <h1>Registration for Account</h1>
         
 
-   
-
         <label>Username</label>
-        <input type="text" name="username" id="address">
+        <input type="text" name="username" >
         <br>
 
         <label>Email</label>
-        <input type="text" name="email" id="address">
+        <input type="text" name="email" >
         <br>
 
         <label>Password</label>
@@ -61,14 +53,18 @@ $row = $students-> fetch_assoc();
          </select>
          <br>
 
-
-
         <input type="submit" name="submit" value="Create">
-        <a href="list-users-account.php">Back</a>
-        <br>
+       
+        
+    </form>
+    
+
+    <a href="list-users-account.php">Back</a>
+    <br>
         <?php
-        if(isset($_POST['submit'])){
      
+        if(isset($_POST['submit'])){
+      
             $usern =  $_POST['username'];
             $email =  $_POST['email'];
             $passw = $_POST['password'];
@@ -76,16 +72,14 @@ $row = $students-> fetch_assoc();
             $userty = $_POST['usertype'];
             $stat = $_POST['status'];
  
-            $DUsern  =$row['username'];
-            $DEmail  =$row['email'];
-         
+           
 
             if(empty($usern) || empty($email) || empty($passw)  || empty($userty)){
                 echo  "All fields are required";
+            }elseif($row['username'] == $usern OR $row['email'] == $email ){
+                echo  "Username or Email already exist";    
             }elseif($passw != $cpassw){
                 echo  "Password did not match";
-            }elseif($email ==  $DEmail ||   $usern == $DUsern  ){
-                echo  "Username or Email already exist";
             }else{
                 $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`,`status`) VALUES ('$usern', '$email', '$passw', '$userty', '$stat')";
                 $con->query($sql) or die ($con->error);
@@ -93,6 +87,7 @@ $row = $students-> fetch_assoc();
                 $sql = "INSERT INTO `user`(`email`) VALUES ('$email')";
                 $conn->query($sql) or die ($con->error);
                 echo header("Location: ../users/list-users-account.php");
+             
         
             }
         
@@ -104,11 +99,5 @@ $row = $students-> fetch_assoc();
     
            
         
-        
-     
-       
-
-
-    </form>
 
     

@@ -1,24 +1,32 @@
 
 <?php
+if(!isset($_SESSION)){
+    ob_start();
+   session_start();
+}
+
 include_once("../connections/connection.php");
-include_once("../base.php");
+include_once("../base-staff.php");
 $con = connection();
+$user = $_SESSION["UserLogin"];
 error_reporting(0);
 
-$sql = "SELECT * FROM pos";
+$sql = "SELECT * FROM pos WHERE list_user='$user'";
 $cart = $con->query($sql) or die ($con->error);
 $row = $cart-> fetch_assoc();
 ?>
 
 
   <h1 class="text-center pt-2">POS System</h1>
-   <a href="../pos-category/classic.php">Classic</a>
-   <a href="../pos-category/special.php">Special</a>
-   <a href="../pos-category/deluxe.php">Deluxe</a>
-   <a href="../pos-category/nosugar.php">No Sugar</a>
+   <a href="../pos-category-staff/classic.php">Classic</a>
+   <a href="../pos-category-staff/special.php">Special</a>
+   <a href="../pos-category-staff/deluxe.php">Deluxe</a>
+   <a href="../pos-category-staff/nosugar.php">No Sugar</a>
    <form method="POST">
    <button type="submit"  name="delete-all" >Clear All</button>
    </form>  
+   
+     
 
     <table class="table table-hover " >
         
@@ -103,11 +111,11 @@ $row = $cart-> fetch_assoc();
 
     <form method="POST">
         <label>Total Amount</label>
-        <input type="text" name="total_amount" value="<?php echo $total; ?>" disabled>
+        <input type="text" name="total_amount" value="<?php echo $total; ?>" disabled >
          
 
         <label>Payment</label>
-        <input type="number" name="cash" value="<?php echo $cash; ?>">
+        <input type="number" name="cash" value="<?php echo $cash; ?>" placeholder="0.00">
 
         <button type="submit" name="compute">Compute</button>
         <br>

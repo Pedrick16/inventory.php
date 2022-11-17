@@ -1,20 +1,22 @@
 <?php
 if(!isset($_SESSION)){
+     ob_start();
     session_start();
 }
 
 
 include_once("../connections/connection.php");
-include_once("../base.php");
+include_once("../base-staff.php");
 $con = connection();
 
+$user = $_SESSION["UserLogin"];
 
 
-if(isset($_SESSION['UserLogin'])){
-    echo "";
-}else{
-    echo header("Location: ../index.php"); 
-}
+// if(isset($_SESSION['UserLogin'])){
+//     echo "Wlcome: ".$_SESSION['UserLogin'];
+// }else{
+//     echo header("Location: ../index.php"); 
+// }
 
 
 
@@ -104,7 +106,12 @@ $row = $category-> fetch_assoc();
                     //errpr trapping for null 
                      echo '<script>alert("No  Available stock")</script>';         
            }else{
-            $sql = "INSERT INTO `pos`(`product_code`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`,`delete_list`) VALUES ('$p_code','$flavor','$size','$price','$diff','$qty','$total_amount','$delete_all')";
+            
+            
+
+            
+            $sql = "INSERT INTO `pos`(`product_code`,`list_user`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`,`delete_list`) VALUES ('$p_code','$user','$flavor','$size','$price','$diff','$qty','$total_amount','$delete_all')";
+            // $sql = "UPDATE pos SET product_code ='$p_code', flavor='$flavor', size ='$size', price='$price', available_stock='$diff',quantity='$qty',total_amount='$total_amount',delete_list='$delete_all' WHERE list_user ='$user'";
             $con->query($sql) or die ($con->error);
             
 

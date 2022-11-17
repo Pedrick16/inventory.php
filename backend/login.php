@@ -68,12 +68,12 @@ $mail = new PHPMailer(true);
 try{
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
-$mail->Username ='bluebirdcapstone@gmail.com';
-$mail->Password = 'onetjdsnipzmzuor';
+$mail->Username ='bluebird05.test@gmail.com';
+$mail->Password = 'tzllfqwfqifnnkfm';
 $mail->SMTPAuth=true;
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
-$mail->setFrom('bluebirdcapstone@gmail.com');
+$mail->setFrom('bluebird05.test@gmail.com');
 $mail->addAddress($email);
 $mail->isHTML(true);
 $mail->Subject='Your OTP Code';
