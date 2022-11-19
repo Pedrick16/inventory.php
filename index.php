@@ -137,22 +137,19 @@ error_reporting(0);
             if($row["access"] == "admin" And $row["status"] == "active"){
                 // pos_user();
                 activy_log();
-            
-                
                 $_SESSION["UserLogin"] =$row['username'];
                 $_SESSION["ID"] =$row['id'];
-         
-              
-                // echo header("Location: users/list-users-account.php");
-                echo header("Location: otp/otp-base-admin.php");
+                echo header("Location: users/list-users-account.php");
+                
+                // echo header("Location: otp/otp-base-admin.php");
              
              
             }elseif($row["access"] == "staff" And $row["status"] == "active"){
                 // pos_user();
                 activy_log();
                 $_SESSION["UserLogin"] =$row['username'];
-                // echo header("Location: staff-site/home.php");
-                echo header("Location: otp/otp-base.php");
+                echo header("Location: staff-site/home.php");
+                // echo header("Location: otp/otp-base.php");
             }elseif($row["status"] == "inactive"){
                 echo "This account does not Active";
             }else{

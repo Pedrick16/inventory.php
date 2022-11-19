@@ -115,7 +115,7 @@ $row = $cart-> fetch_assoc();
          
 
         <label>Payment</label>
-        <input type="number" name="cash" value="<?php echo $cash; ?>" placeholder="0.00">
+        <input type="number" name="cash" placeholder="0.00">
 
         <button type="submit" name="compute">Compute</button>
         <br>

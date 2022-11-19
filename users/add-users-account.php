@@ -9,9 +9,7 @@ include_once("../connections/connection-otp.php");
 $con = connection();
 $conn = connection_otp();
 
-$sql = "SELECT * FROM users_account ";
-$students = $con->query($sql) or die ($con->error);
-$row = $students-> fetch_assoc();
+
 
 ?>
 
@@ -71,21 +69,28 @@ $row = $students-> fetch_assoc();
             $cpassw = $_POST['confirm'];
             $userty = $_POST['usertype'];
             $stat = $_POST['status'];
+
+            $user_sql = "SELECT username FROM users_account WHERE username='$usern'";
+            $check_username = $con->query($user_sql) or die ($con->error);
+
+            $email_sql = "SELECT email FROM users_account WHERE username='$email'";
+            $check_email = $con->query($email_sql) or die ($con->error);
  
            
 
             if(empty($usern) || empty($email) || empty($passw)  || empty($userty)){
                 echo  "All fields are required";
-            }elseif($row['username'] == $usern OR $row['email'] == $email ){
-                echo  "Username or Email already exist";    
-            }elseif($passw != $cpassw){
-                echo  "Password did not match";
+            }elseif(mysqli_num_rows($check_username) > 0){
+                echo  "Your Username  already exist";   
+            }elseif(mysqli_num_rows($check_email) > 0){
+                echo  "Your email  already exist";         
+        
             }else{
                 $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`,`status`) VALUES ('$usern', '$email', '$passw', '$userty', '$stat')";
                 $con->query($sql) or die ($con->error);
 
-                $sql = "INSERT INTO `user`(`email`) VALUES ('$email')";
-                $conn->query($sql) or die ($con->error);
+                // $sql = "INSERT INTO `user`(`email`) VALUES ('$email')";
+                // $conn->query($sql) or die ($con->error);
                 echo header("Location: ../users/list-users-account.php");
              
         

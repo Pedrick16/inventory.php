@@ -30,7 +30,7 @@ $row = $archive-> fetch_assoc();
     <title>Document</title>
 </head>
 <body>
-    <h1  class="text-center">List of Archive Reseller</h1>
+    <h1  class="text-center">List of Archive Users</h1>
     <a href="listresellers.php">Back</a>
 <table class="table table-hover">
         <thead>
@@ -94,7 +94,7 @@ $row = $archive-> fetch_assoc();
         if(empty($usern) || empty($email) || empty($passw) || empty($access) || empty($stat)){
             echo  "No Records Found!";
         }else{
-            $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`, `status`) VALUES ('$usern','$email',' $passw','$access','$stat')";
+            $sql = "INSERT INTO `users_account`( `username`, `email`, `password`, `access`, `status`) VALUES ('$usern','$email','$passw','$access','$stat')";
             $con->query($sql) or die ($con->error);
             echo header("Location: ../users/list-users-account.php");
             ob_end_flush();
