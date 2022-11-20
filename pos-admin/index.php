@@ -75,7 +75,7 @@ $row = $cart-> fetch_assoc();
     <?php
     if(isset($_POST['delete-all'])){
         $d_list = "1";
-        $sql = "DELETE FROM pos WHERE delete_list='$d_list'";
+        $sql = "DELETE FROM pos WHERE list_user='$user'";
         $con->query($sql) or die ($con->error);
         echo "<meta http-equiv='refresh' content='0'>";
 

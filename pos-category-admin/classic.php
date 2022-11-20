@@ -71,7 +71,7 @@ $row = $category-> fetch_assoc();
             <input type="hidden" name="price" value="<?php echo $row['price'];?>">
             <input type="hidden" name="available_stock" value="<?php echo $row['available_stock'];?>">
             <input type="hidden" name="status" value="<?php echo $row['status'];?>">
-            <input type="hidden" name="delete" value="1">
+           
             </form>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
@@ -110,7 +110,7 @@ $row = $category-> fetch_assoc();
             
 
             
-            $sql = "INSERT INTO `pos`(`product_code`,`list_user`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`,`delete_list`) VALUES ('$p_code','$user','$flavor','$size','$price','$diff','$qty','$total_amount','$delete_all')";
+            $sql = "INSERT INTO `pos`(`product_code`,`list_user`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`) VALUES ('$p_code','$user','$flavor','$size','$price','$diff','$qty','$total_amount')";
             // $sql = "UPDATE pos SET product_code ='$p_code', flavor='$flavor', size ='$size', price='$price', available_stock='$diff',quantity='$qty',total_amount='$total_amount',delete_list='$delete_all' WHERE list_user ='$user'";
             $con->query($sql) or die ($con->error);
             

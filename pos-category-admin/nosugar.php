@@ -1,5 +1,6 @@
 <?php
 if(!isset($_SESSION)){
+     ob_start();
     session_start();
 }
 
@@ -8,13 +9,14 @@ include_once("../connections/connection.php");
 include_once("../base.php");
 $con = connection();
 
+$user = $_SESSION["UserLogin"];
 
 
-if(isset($_SESSION['UserLogin'])){
-    echo "";
-}else{
-    echo header("Location: ../index.php"); 
-}
+// if(isset($_SESSION['UserLogin'])){
+//     echo "Wlcome: ".$_SESSION['UserLogin'];
+// }else{
+//     echo header("Location: ../index.php"); 
+// }
 
 
 
@@ -69,7 +71,7 @@ $row = $category-> fetch_assoc();
             <input type="hidden" name="price" value="<?php echo $row['price'];?>">
             <input type="hidden" name="available_stock" value="<?php echo $row['available_stock'];?>">
             <input type="hidden" name="status" value="<?php echo $row['status'];?>">
-            <input type="hidden" name="delete" value="1">
+          
             </form>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
@@ -85,7 +87,7 @@ $row = $category-> fetch_assoc();
            $size= $_POST['size'];
            $price = $_POST['price'];
            $status = $_POST['status'];
-           $delete_all = $_POST['delete'];
+          
            
            $avail_stock = $_POST['available_stock'];
            //current stock minus quantity
@@ -104,7 +106,12 @@ $row = $category-> fetch_assoc();
                     //errpr trapping for null 
                      echo '<script>alert("No  Available stock")</script>';         
            }else{
-            $sql = "INSERT INTO `pos`(`product_code`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`,`delete_list`) VALUES ('$p_code','$flavor','$size','$price','$diff','$qty','$total_amount','$delete_all')";
+            
+            
+
+            
+            $sql = "INSERT INTO `pos`(`product_code`,`list_user`,`flavor`, `size`,`price`,`available_stock`,`quantity`,`total_amount`) VALUES ('$p_code','$user','$flavor','$size','$price','$diff','$qty','$total_amount')";
+            // $sql = "UPDATE pos SET product_code ='$p_code', flavor='$flavor', size ='$size', price='$price', available_stock='$diff',quantity='$qty',total_amount='$total_amount',delete_list='$delete_all' WHERE list_user ='$user'";
             $con->query($sql) or die ($con->error);
             
 
