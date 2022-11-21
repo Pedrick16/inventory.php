@@ -39,17 +39,7 @@
         <li class="nav-item">
           <a class="nav-link" href="../inventory-admin/add-stock-products.php">Inventory</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Inventory
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="../inventory-admin/classic.php">Classic</a></li>
-            <li><a class="dropdown-item" href="../inventory-admin/special.php">Special</a></li>
-            <li><a class="dropdown-item" href="../inventory-admin/deluxe.php">Deluxe</a></li>
-            <li><a class="dropdown-item" href="../inventory-admin/nosugar.php">No sugar</a></li>
-          </ul>
-        </li>
+    
         
 
         <li class="nav-item">
