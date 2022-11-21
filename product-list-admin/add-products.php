@@ -13,20 +13,22 @@ $con = connection();
 
 <h1>Add Products</h1>
 
-<form  method="post">
+<form  method="POST">
+
+<label>Product Code</label>
+<input type="text" name="p_code"  required><br>
+
 
 
 <label>Flavors</label>
 <input type="text" name="flavor"  required><br>
 
+<label>category</label>
+<input type="text" name="category"  required><br>
+
 <label>size</label>
-<select name="size"  required><br>
-    <option></option>
-    <option value="Cups 110 ml">Cups 110 ml</option>
-    <option value="Pint 473 ml">Pint 473 ml</option>
-    <option value="Half Gallon 1.9 L">Half Gallon 1.9 L</option>
-    <option value="1 Gallon 3.8 L">1 Gallon 3.8 L</option>
-</select>
+<input type="text" name="size"  required><br>
+
 <br>
 <label>Price</label>
 <input type="text" name="price"  required>
@@ -36,7 +38,7 @@ $con = connection();
 <input type="number" name="stock"  required><br>
 
 <label>Status</label>
-<select name="status"  required>
+<select name="status" required>
     <option></option>
     <option value="Available">Available</option>
     <option value="N/A">N/A</option>
@@ -44,24 +46,24 @@ $con = connection();
 <br>
 
 <input type="submit" name="submit" value="Add">
-<a href="../product-list-admin/classic.php">Back</a>
+<a href="all-products.php">Back</a>
 <?php
         if(isset($_POST['submit'])){
-    
+            $p_code =  $_POST['p_code'];
             $flavor =  $_POST['flavor'];
+            $category =  $_POST['category'];
             $size = $_POST['size'];
             $price = $_POST['price'];
             $stock = $_POST['stock'];
-            $status= $_POST['status'];
+            $stat= $_POST['status'];
            
         
-            if(empty($flavor) || empty($size) || empty($price) || empty($stock)  || empty($status)){
+            if(empty($p_code) ||empty($flavor) || empty($category) || empty($size) || empty($price) || empty($stock)  || empty($stat)){
                 echo  "All fields are required";
             }else{
-                $sql = "INSERT INTO `classic`( `flavor`, `size`, `price`,
-                `available_stock`, `status`) VALUES ('$flavor','$size','$price','$stock','$status')";
+                $sql = "INSERT INTO `products`( `product_code`,`flavor`,`category`, `size`, `price`,`available_stock`, `status`) VALUES ('$p_code','$flavor','$category','$size','$price','$stock','$stat')";
                 $con->query($sql) or die ($con->error);
-                header("Location: ../product-list-admin/classic.php");
+                header("Location: all-products.php");
                 ob_end_flush();
         
             }
