@@ -1,4 +1,7 @@
+<?php
+ob_start();
 
+?>
 
 <?php
 
@@ -9,9 +12,17 @@ $con = connection();
 include_once("../base.php");
 
 $product_code = $_GET['PRODUCT-CODE'];
-$sql = "SELECT * FROM special WHERE product_code='$product_code' ";
+$sql = "SELECT * FROM products WHERE product_code='$product_code' ";
 $product = $con->query($sql) or die ($con->error);
 $row = $product-> fetch_assoc();
+
+
+
+   
+
+
+
+
 
 
 
@@ -23,22 +34,13 @@ $row = $product-> fetch_assoc();
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/add.css?v=<?php echo time();?>">
-    <title>Document</title>
-</head>
-<body>
+
 
    
 
 
-    <form action="" method="post">
-    <h1>Add Stock Special</h1>
+    <form  method="POST">
+        <h1>Add Stock Products</h1>
         <?php
         echo "Product Code: "." ".$product_code;
         ?>
@@ -47,17 +49,12 @@ $row = $product-> fetch_assoc();
         <input type="text" name="stock"><br>
 
     
-
-       
-
-       
-        
-     
          
         <input type="submit" name="submit" value="Add">
        
-        <a href="../inventory-admin/special.php">Back</a>
+        <a href="../inventory-admin/add-stock-products.php">Back</a>
         <br>    
+        </form>
 
         <?php
         if(isset($_POST['submit'])){
@@ -74,19 +71,17 @@ $row = $product-> fetch_assoc();
             if(empty($stock)){
                 echo  "all field are required";
             }else{
-                $sql = "UPDATE special SET available_stock ='$sum' WHERE product_code ='$product_code'";
+                $sql = "UPDATE products SET available_stock ='$sum' WHERE product_code ='$product_code'";
                 $con->query($sql) or die ($con->error);
-                echo header("Location: ../inventory/special.php");       
+                echo header("Location: ../inventory-admin/add-stock-products.php");       
+                ob_end_flush();
             }
         }
-        
         
         
         ?>
        
 
 
-    </form>
+  
     
-</body>
-</html>

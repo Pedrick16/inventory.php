@@ -21,7 +21,10 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../users/list-users-account.php">Users List</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" href="../product-list-admin/all-products.php">Products</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Products
           </a>
@@ -32,6 +35,9 @@
             <li><a class="dropdown-item" href="../product-list-admin/nosugar.php">No sugar</a></li>
             
           </ul>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="../inventory-admin/add-stock-products.php">Inventory</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
