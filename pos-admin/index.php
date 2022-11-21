@@ -23,12 +23,12 @@ $row = $cart-> fetch_assoc();
    <a href="../pos-category-admin/deluxe.php">Deluxe</a>
    <a href="../pos-category-admin/nosugar.php">No Sugar</a>
    <form method="POST">
-   <button type="submit"  name="delete-all" >Clear All</button>
+   <button class="btn btn-dark" type="submit"  name="delete-all" >Clear All</button>
    </form>  
    
      
 
-    <table class="table table-hover " >
+    <table class="table table-hover text-center " >
         
         <thead>
             <tr>
@@ -38,7 +38,8 @@ $row = $cart-> fetch_assoc();
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Amount</th>
-                <th>Cancel</th>
+                <th></th>
+          
             </tr>
         </thead>
         <tbody>
@@ -60,7 +61,7 @@ $row = $cart-> fetch_assoc();
                 <td><?php echo $row['quantity'];?></td>
                 <td><?php echo $row['total_amount'];?></td>
                 <form method="POST">
-                <td><button type="submit" name="cancel">cancel</button></td>
+                <td><button class="btn btn-dark" type="submit" name="cancel">cancel</button></td>
                 <input type="hidden" name="ID" value="<?php echo $row['list_id'];?>">
                 <input type="hidden" name="qty" value="<?php echo $row['quantity'];?>">
                 <input type="hidden" name="avail_stock" value="<?php echo $row['available_stock'];?>">
@@ -117,7 +118,7 @@ $row = $cart-> fetch_assoc();
         <label>Payment</label>
         <input type="number" name="cash" placeholder="0.00">
 
-        <button type="submit" name="compute">Compute</button>
+        <button class="btn btn-dark" type="submit" name="compute">Compute</button>
         <br>
     
 

@@ -34,13 +34,9 @@ $row = $users-> fetch_assoc();
 
 ?>
 
-    <link rel="stylesheet" href="../css/listreseller.css?v=<?php echo time();?>">
-    <style>
-        #edit{
-            text-decoration: none;
-            color: black;
-        }
-    </style>
+    <!-- <link rel="stylesheet" href="../css/style.css?v=<?php echo time();?>"> -->
+
+    
 
     <h1 class="text-center">List of Users</h1>
     <br>
@@ -51,7 +47,7 @@ $row = $users-> fetch_assoc();
  
 
 
-    <table class="table table-hover">
+    <table class="table table-hover text-center">
         <thead>
         <tr>
             <th>Username</th>
@@ -60,8 +56,8 @@ $row = $users-> fetch_assoc();
           
             <th>Access</th>
             <th>Status</th>
-            <th>Edit</th>
-            <th>Archive</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -81,12 +77,12 @@ $row = $users-> fetch_assoc();
     
 
             <form  method="POST">
-            <td><button ><a href="edit-users.php?ID=<?php echo $row['id'];?>"id="edit">Edit</a></button></td>
+            <td><button class="btn btn-light" ><a href="edit-users.php?ID=<?php echo $row['id'];?>"id="edit">Edit</a></button></td>
         
             </form> 
 
             <form  method="POST">
-            <td><button type="submit" name="delete">Archive</button></td>
+            <td><button class="btn btn-dark" type="submit" name="delete">Archive</button></td>
         
             <input type="hidden" name="ID" value="<?php echo $row['id'];?>">
             <input type="hidden" name="username" value="<?php echo $row['username'];?>" >

@@ -29,7 +29,7 @@ $row = $category-> fetch_assoc();
 
 
 
-<link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
+<link rel="stylesheet" href="../css/style.css?=<?php echo time();?>">
 <style>
     p{
         text-align: right;

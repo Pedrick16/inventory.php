@@ -30,9 +30,11 @@ $row = $archive-> fetch_assoc();
     <title>Document</title>
 </head>
 <body>
+    <br>
     <h1  class="text-center">List of Archive Users</h1>
-    <a href="listresellers.php">Back</a>
-<table class="table table-hover">
+    <br>
+
+<table class="table table-hover text-center">
         <thead>
         <tr>
             <th>Username</th>
@@ -40,6 +42,7 @@ $row = $archive-> fetch_assoc();
             <th>Password</th>
             <th>Access</th>
             <th>Status</th>
+            <th></th>
      
          
       
@@ -55,7 +58,7 @@ $row = $archive-> fetch_assoc();
             <td><?php echo $row['access'];?></td>
             <td><?php echo $row['status'];?></td>
             <form  method="POST">
-            <td><button type="submit" name="delete">Retrieve</button></td>
+            <td><button class="btn btn-dark" type="submit" name="delete">Retrieve</button></td>
         
             <input type="hidden" name="ID" value="<?php echo $row['id'];?>">
             <input type="hidden" name="username" value="<?php echo $row['username'];?>" >

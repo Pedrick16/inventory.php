@@ -102,23 +102,24 @@ error_reporting(0);
     <form  method="POST">
         <h1 class="header">LOGIN SYSTEM</h1>
 
-        <label><strong>Email/Username</strong></label>
-        <input type="text" name="email" placeholder="Enter username or email" >
+        <label><strong>Username</strong></label>
+        <input type="text" name="username" placeholder="Enter username or email" >
 
         <label><strong>Password</strong></label>
         <input type="password" name="password" placeholder="Enter your Password" >
-        <input type="submit" name="login"value="Login" >
+        <button  class="btn btn-dark" type="submit" name="login">Login</button>
+        
         <br>
       
     </form>    
     <?php   
         if(isset($_POST['login'])){
         
-            $email = $_POST['email'];
+            $username = $_POST['username'];
             $password = $_POST['password'];
            
             
-            $sql = "SELECT * FROM users_account WHERE username = '$email'  And password = '$password' OR email = '$email'  And password = '$password'";
+            $sql = "SELECT * FROM users_account WHERE username = '$username'  And password = '$password'";
             $user = $con->query($sql) or die ($con->error);
             $row = mysqli_fetch_array($user);
  
@@ -127,8 +128,8 @@ error_reporting(0);
                 
                 $con = connection();
                 $act = "logged-in";
-                $email = $_POST['email'];
-                $sql = "INSERT INTO `act_log`( `user_email`, `activity`) VALUES ('$email','$act')";
+                $username = $_POST['username'];
+                $sql = "INSERT INTO `act_log`( `user_email`, `activity`) VALUES ('$username','$act')";
                 $con->query($sql) or die ($con->error);
             }
             
@@ -151,7 +152,7 @@ error_reporting(0);
                 echo header("Location: staff-site/home.php");
                 // echo header("Location: otp/otp-base.php");
             }elseif($row["status"] == "inactive"){
-                echo "This account does not Active";
+                echo "<p>This account does not Active</p>";
             }else{
                 echo "<p>Sorry your Username and Password is incorrect</p>";
             }

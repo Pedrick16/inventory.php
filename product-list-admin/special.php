@@ -10,12 +10,12 @@ $row = $category-> fetch_assoc();
 
 ?>
 
-<link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
+<!-- <link rel="stylesheet" href="../css/style.css?=<?php echo time();?>"> -->
 <br>
 <h1 class="text-center">Special</h1>
 <br>
 <a href="../add-products-admin/add-special.php">Add Product</a>
-<table class="table table-hover">
+<table class="table table-hover text-center">
         <thead>
     
         <tr>
@@ -25,6 +25,7 @@ $row = $category-> fetch_assoc();
             <th>Price</th>
             <th>Available Stock</th>
             <th>Status</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +37,7 @@ $row = $category-> fetch_assoc();
             <td><?php echo $row['price'];?></td>
             <td><?php echo $row['available_stock'];?></td>
             <td><?php echo $row['status'];?></td>
-            <td><button ><a href="../edit-products-admin/edit-special.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
+            <td><button  class="btn btn-light" ><a href="../edit-products-admin/edit-special.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
         </tbody>

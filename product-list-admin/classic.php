@@ -22,21 +22,23 @@ $category = $con->query($sql) or die ($con->error);
 $row = $category-> fetch_assoc();
 ?>
 
-<link rel="stylesheet" href="../css/products.css?=<?php echo time();?>">
-<h1 class="text-center">Classic</h1>
+<!-- <link rel="stylesheet" href="../css/style.css?=<?php echo time();?>"> -->
 <br>
-<a href="../add-products-admin/add-classic.php">Add Product</a>
+<h1 class="text-center ">Classic</h1>
+<br>
+<a  href="../add-products-admin/add-classic.php">Add Product</a>
 
-<table class="table table-hover">
+
+<table class="table table-hover text-center">
         <thead>
         <tr>
             <th>Product code </th>
             <th>Flavor</th>
-            <th>Category</th>
             <th>Size</th>
             <th>Price</th>
             <th>Available Stock</th>
             <th>Status</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -48,7 +50,7 @@ $row = $category-> fetch_assoc();
             <td><?php echo $row['price'];?></td>
             <td><?php echo $row['available_stock'];?></td>
             <td><?php echo $row['status'];?></td>
-            <td><button ><a href="../edit-products-admin/edit-classic.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
+            <td><button  class="btn btn-light" ><a href="../edit-products-admin/edit-classic.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" id="edit">Edit</a></button></td>
         </tr>
         <?php }while($row = $category->fetch_assoc())?>
         </tbody>

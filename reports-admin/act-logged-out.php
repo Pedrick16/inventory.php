@@ -30,12 +30,12 @@ $row = $users-> fetch_assoc();
     <title>Document</title>
 </head>
 <body>
-    <table class="table">
+    <table class="table table-hover text-center">
         <thead>
 
             <tr>
 
-                <th>Username-Email</th>
+                <th>Username</th>
                 <th>Activity</th>
                 <th>Date and time Logged-out</th>
            

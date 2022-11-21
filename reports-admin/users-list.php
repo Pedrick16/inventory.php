@@ -16,8 +16,11 @@ $row = $users->fetch_assoc();
     <title>Document</title>
 </head>
 <body>
-    <table class="table table-hover">
+    <br>
+    <table class="table table-hover text-center">
+        
         <h1 class="text-center">List of Users</h1>
+        <br>
         <thead>
             <tr>
                 <th>Username</th>

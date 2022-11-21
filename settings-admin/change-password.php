@@ -25,7 +25,7 @@ error_reporting(0);
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" class="text-center">
         <h1>Change Password</h1>
         <br>
         <label>Email</label>
@@ -39,8 +39,9 @@ error_reporting(0);
         <br>
         <label for="">Confirm Password</label>
         <input type="password" name="cpassword" required>
+        <br>
 
-        <input type="submit" name="submit" value="Submit">
+        <button class="btn btn-dark" type="submit" name="submit">Submit</button>
 
 
 
