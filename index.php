@@ -11,6 +11,10 @@ include_once("connections/connection.php");
 $con = connection();
 error_reporting(0);
 
+$id_session = $_SESSION["ID"];
+
+
+
 
 
 
@@ -129,7 +133,7 @@ error_reporting(0);
                 $con = connection();
                 $act = "logged-in";
                 $username = $_POST['username'];
-                $sql = "INSERT INTO `act_log`( `user_email`, `activity`) VALUES ('$username','$act')";
+                $sql = "INSERT INTO `act_log`(`user_email`, `activity`) VALUES ('$username','$act')";
                 $con->query($sql) or die ($con->error);
             }
             
@@ -140,15 +144,17 @@ error_reporting(0);
                 activy_log();
                 $_SESSION["UserLogin"] =$row['username'];
                 $_SESSION["ID"] =$row['id'];
+              
                 echo header("Location: users/list-users-account.php");
                 
-                // echo header("Location: otp/otp-base-admin.php");
+            //  echo header("Location: otp/otp-base-admin.php");   
              
              
             }elseif($row["access"] == "staff" And $row["status"] == "active"){
-                // pos_user();
-                activy_log();
+          
+                activy_log($id_session);
                 $_SESSION["UserLogin"] =$row['username'];
+                
                 echo header("Location: staff-site/home.php");
                 // echo header("Location: otp/otp-base.php");
             }elseif($row["status"] == "inactive"){
@@ -159,6 +165,7 @@ error_reporting(0);
             
             }
         ?>
+       
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

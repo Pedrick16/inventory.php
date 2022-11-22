@@ -15,9 +15,8 @@ $row = $category-> fetch_assoc();
         }
 </style>
 
-
-
 <table class="table table-hover text-center">
+  
         <thead>
         <tr>
             <th>Product code </th>

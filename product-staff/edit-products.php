@@ -1,15 +1,23 @@
 <?php
+ob_start();
+
+?>
+
+<?php
 
 
 
 include_once("../connections/connection.php");
 $con = connection();
-include_once("../base.php");
+include_once("../base-staff.php");
 
 $product_code = $_GET['PRODUCT-CODE'];
-$sql = "SELECT * FROM deluxe WHERE product_code='$product_code' ";
+$sql = "SELECT * FROM products WHERE product_code='$product_code' ";
 $product = $con->query($sql) or die ($con->error);
 $row = $product-> fetch_assoc();
+
+
+
 
 
 
@@ -45,6 +53,14 @@ $row = $product-> fetch_assoc();
 
     <form action="" method="post">
     <h1>EDIT CLASSIC</h1>
+        <label>Product Code</label>
+        <input type="text" name="price"  value="<?php echo $row['product_code'];?>"><br>
+
+        <label>Flavor</label>
+        <input type="text" name="price"  value="<?php echo $row['flavor'];?>"><br>
+
+        <label>Category</label>
+        <input type="text" name="category"  value="<?php echo $row['category'];?>"><br>
 
         <label>Price</label>
         <input type="text" name="price"  value="<?php echo $row['price'];?>"><br>
@@ -55,7 +71,7 @@ $row = $product-> fetch_assoc();
 
         <label>Status</label>
         <select name="status" >
-
+    
             <option value="Available" <?php echo ($row['status'] == "Available")? 'selected' : '';?>>Available</option>
             <option value="N/A" <?php echo ($row['status'] == "N/A")? 'selected' : '';?>>N/A</option>
         </select><br>
@@ -67,8 +83,10 @@ $row = $product-> fetch_assoc();
      
          
         <input type="submit" name="submit" value="Update">
+        
        
-        <a href="../product-list-admin/deluxe.php">Back</a>
+
+        <a href="all-products.php">Back</a>
         <br>    
 
         <?php
@@ -86,9 +104,10 @@ $row = $product-> fetch_assoc();
             if($price == $E_price And $status == $E_status And $available_stock == $E_avail_stock){
                 echo  "No changes found!";
             }else{
-                $sql = "UPDATE deluxe SET price ='$price', available_stock=' $available_stock', status='$status' WHERE product_code ='$product_code'";
+                $sql = "UPDATE classic SET price ='$price', available_stock=' $available_stock', status='$status' WHERE product_code ='$product_code'";
                 $con->query($sql) or die ($con->error);
-                echo header("Location: ../product-list-admin/deluxe.php");       
+                echo header("Location: ../product-list-admin/classic.php");     
+                ob_end_flush();
             }
         }
         

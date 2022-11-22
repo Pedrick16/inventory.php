@@ -39,14 +39,14 @@ $row = $product-> fetch_assoc();
    
 
 
-    <form  method="POST">
+    <form  method="POST" class="text-center">
         <h1>Add Stock Products</h1>
         <?php
         echo "Product Code: "." ".$product_code;
         ?>
         <br>
         <label>Add stock</label>
-        <input type="text" name="stock"><br>
+        <input type="number" name="stock"><br>
 
     
          
@@ -73,8 +73,9 @@ $row = $product-> fetch_assoc();
             }else{
                 $sql = "UPDATE products SET available_stock ='$sum' WHERE product_code ='$product_code'";
                 $con->query($sql) or die ($con->error);
-                echo header("Location: ../inventory-admin/add-stock-products.php");       
+                echo header("Location: ../inventory-admin/add-stock-products.php");  
                 ob_end_flush();
+                echo "<meta http-equiv='refresh' content='0'>";
             }
         }
         

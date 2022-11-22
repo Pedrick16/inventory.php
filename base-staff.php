@@ -20,29 +20,15 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../staff-site/home.php">Home</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="../product-list-staff/classic.php">Classic</a></li>
-            <li><a class="dropdown-item" href="../product-list-staff/special.php">Special</a></li>
-            <li><a class="dropdown-item" href="../product-list-staff/deluxe.php">Deluxe</a></li>
-            <li><a class="dropdown-item" href="../product-list-staff/nosugar.php">No sugar</a></li>
-            
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="../product-staff/all-products.php">Products</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Inventory
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="../inventory-staff/classic.php">Classic</a></li>
-            <li><a class="dropdown-item" href="../inventory-staff/special.php">Special</a></li>
-            <li><a class="dropdown-item" href="../inventory-staff/deluxe.php">Deluxe</a></li>
-            <li><a class="dropdown-item" href="../inventory-staff/nosugar.php">No sugar</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="../inventory-staff/add-stock-products.php">Inventory</a>
         </li>
+       
+
+        
         
 
         <li class="nav-item">

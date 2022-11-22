@@ -38,6 +38,7 @@ $row = $users-> fetch_assoc();
                 <th>Username</th>
                 <th>Activity</th>
                 <th>Date and time Logged-in</th>
+          
            
             </tr>
         </thead>
@@ -48,7 +49,7 @@ $row = $users-> fetch_assoc();
                 <td><?php echo $row['user_email'];?></td>
                 <td><?php echo $row['activity'];?></td>
                 <td><?php echo $row['logged-in'];?></td>
-     
+         
             </tr>
             <?php }while($row = $users-> fetch_assoc())?>
         </tbody>

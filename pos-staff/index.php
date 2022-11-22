@@ -6,7 +6,8 @@ if(!isset($_SESSION)){
 }
 
 include_once("../connections/connection.php");
-include_once("../base-staff.php");
+include_once("../base.php");
+
 $con = connection();
 $user = $_SESSION["UserLogin"];
 error_reporting(0);
@@ -15,20 +16,22 @@ $sql = "SELECT * FROM pos WHERE list_user='$user'";
 $cart = $con->query($sql) or die ($con->error);
 $row = $cart-> fetch_assoc();
 ?>
+       
+      
 
 
+      
+  
   <h1 class="text-center pt-2">POS System</h1>
-   <a href="../pos-category-staff/classic.php">Classic</a>
-   <a href="../pos-category-staff/special.php">Special</a>
-   <a href="../pos-category-staff/deluxe.php">Deluxe</a>
-   <a href="../pos-category-staff/nosugar.php">No Sugar</a>
+   <a href="all-products.php">All Products</a>
+  
    <form method="POST">
-   <button type="submit"  name="delete-all" >Clear All</button>
+   <button class="btn btn-dark" type="submit"  name="delete-all" >Clear All</button>
    </form>  
    
      
 
-    <table class="table table-hover " >
+    <table class="table table-hover text-center" >
         
         <thead>
             <tr>
@@ -38,7 +41,8 @@ $row = $cart-> fetch_assoc();
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Amount</th>
-                <th>Cancel</th>
+                <th></th>
+           
             </tr>
         </thead>
         <tbody>
@@ -60,22 +64,33 @@ $row = $cart-> fetch_assoc();
                 <td><?php echo $row['quantity'];?></td>
                 <td><?php echo $row['total_amount'];?></td>
                 <form method="POST">
-                <td><button type="submit" name="cancel">cancel</button></td>
+                 
+                <td><a href="valid.php?PRODUCT-CODE=<?php echo $row['product_code'];?>" class="btn btn-danger" >Cancel</a></td>
+                <!-- <td><button class="cancel btn btn-danger" type="submit" name="cancel" >cancel</button></td> -->
                 <input type="hidden" name="ID" value="<?php echo $row['list_id'];?>">
                 <input type="hidden" name="qty" value="<?php echo $row['quantity'];?>">
                 <input type="hidden" name="avail_stock" value="<?php echo $row['available_stock'];?>">
                 <input type="hidden" name="p_code" value="<?php echo $row['product_code'];?>">
-                </form>
+                <!-- </form> -->
             </tr>
             
         <?php }while($row = $cart-> fetch_assoc())?>    
         
         </tbody>
     </table>
+    <script>
+    function disableButton() {
+        var btn = document.getElementById('btn');
+        btn.disabled = true;
+        btn.innerText = 'Posting...'
+    }
+</script>
+
+    
     <?php
     if(isset($_POST['delete-all'])){
-        $d_list = "1";
-        $sql = "DELETE FROM pos WHERE delete_list='$d_list'";
+     
+        $sql = "DELETE FROM pos WHERE list_user='$user'";
         $con->query($sql) or die ($con->error);
         echo "<meta http-equiv='refresh' content='0'>";
 
@@ -87,20 +102,21 @@ $row = $cart-> fetch_assoc();
     ?>
 
     <?php
-    if(isset($_POST['cancel'])){
+    if(isset($_POST['cancel']) ){
         $id = $_POST['ID'];
         $p_code = $_POST['p_code'];
         $qty_classic = $_POST['qty'];
         $avai_stock = $_POST['avail_stock'];
 
         $return_stock = $avai_stock + $qty_classic;
-    
-
+         
+       
+       
 
         $sql = "DELETE FROM pos WHERE list_id='$id'";
         $con->query($sql) or die ($con->error);
 
-        $sql = "UPDATE classic SET  available_stock='$return_stock' WHERE product_code ='$p_code'";
+        $sql = "UPDATE products SET  available_stock='$return_stock' WHERE product_code ='$p_code'";
         $con->query($sql) or die ($con->error);
         echo "<meta http-equiv='refresh' content='0'>";
 
@@ -115,9 +131,9 @@ $row = $cart-> fetch_assoc();
          
 
         <label>Payment</label>
-        <input type="number" name="cash"  placeholder="0.00">
+        <input type="number" name="cash" value="" placeholder="0.00">
 
-        <button type="submit" name="compute">Compute</button>
+        <button class="btn btn-dark" type="submit" name="compute">Compute</button>
         <br>
     
 

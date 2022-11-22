@@ -12,8 +12,9 @@ function act_logout($user){
                 $sql = "INSERT INTO `act_logged_out`( `user_email`, `activity`) VALUES ('$user','$act')";
                 $con->query($sql) or die ($con->error);
 } 
-?>
 
+// 
+?>
 
 <?php
 act_logout($user);

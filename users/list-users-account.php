@@ -35,7 +35,12 @@ $row = $users-> fetch_assoc();
 ?>
 
     <!-- <link rel="stylesheet" href="../css/style.css?v=<?php echo time();?>"> -->
-
+    <style>
+        #edit{
+            text-decoration: none;
+            color: white;
+        }
+ </style>
     
 
     <h1 class="text-center">List of Users</h1>
@@ -77,12 +82,12 @@ $row = $users-> fetch_assoc();
     
 
             <form  method="POST">
-            <td><button class="btn btn-light" ><a href="edit-users.php?ID=<?php echo $row['id'];?>"id="edit">Edit</a></button></td>
+            <td><button class="btn btn-dark"><a href="edit-users.php?ID=<?php echo $row['id'];?>"id="edit">Edit</a></button></td>
         
             </form> 
 
             <form  method="POST">
-            <td><button class="btn btn-dark" type="submit" name="delete">Archive</button></td>
+            <td><button class="btn btn-danger" type="submit" name="delete">Archive</button></td>
         
             <input type="hidden" name="ID" value="<?php echo $row['id'];?>">
             <input type="hidden" name="username" value="<?php echo $row['username'];?>" >
